@@ -188,8 +188,8 @@ class NTTable(QtWidgets.QWidget, PyDMWidget):
 
         try:
             values = list(zip(*[v for k, v in values.items()]))
-        except:
-            logger.exception("Failed to parse value.")
+        except TypeError:
+            logger.exception("NTTable value items must be iterables.")
 
         self._table_values = values
 
