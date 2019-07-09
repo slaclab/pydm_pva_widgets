@@ -1,7 +1,11 @@
+import logging
+
 from operator import itemgetter
 
 from pydm.widgets.base import PyDMWidget
 from qtpy import QtCore, QtWidgets
+
+logger = logging.getLogger(__name__)
 
 
 class PythonTableModel(QtCore.QAbstractTableModel):
@@ -182,7 +186,11 @@ class NTTable(QtWidgets.QWidget, PyDMWidget):
         if labels is None or len(labels) == 0:
             labels = values.keys()
 
-        values = list(zip([v for k, v in values.items()]))
+        try:
+            values = list(zip(*[v for k, v in values.items()]))
+        except:
+            logger.exception("Failed to parse value.")
+
         self._table_values = values
 
         if labels != self._table_labels:
