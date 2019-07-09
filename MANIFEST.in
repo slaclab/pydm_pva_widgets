@@ -1,2 +1,5 @@
 include versioneer.py
 include pydm_pva_widgets/_version.py
+include requirements.txt
+include README.md
+include LICENSE.md
