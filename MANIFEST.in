@@ -1,0 +1,2 @@
+include versioneer.py
+include pydm_pva_widgets/_version.py

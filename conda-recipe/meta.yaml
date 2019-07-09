@@ -1,0 +1,29 @@
+{% set data = load_setup_py_data() %}
+
+package:
+    name    : pydm_pva_widgets
+    version : {{ data.get('version') }}
+
+source:
+    path: ..
+
+requirements:
+    build:
+      - python
+      - setuptools
+
+    run:
+      - python
+      - pydm >=2
+
+test:
+    imports:
+      - pydm_pva_widgets
+
+    requires:
+      - pytest
+
+about:
+  home: https://github.com/slaclab/pydm_pva_widgets
+  license: SLAC Open License
+  summary: EPICS PVAccess PyDM Widget Library
